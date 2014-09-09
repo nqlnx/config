@@ -10,6 +10,7 @@ for installation arch linux
 
 for instalation ubuntu/debian
 
+
  sudo apt-get install i3
 
 
