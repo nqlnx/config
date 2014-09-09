@@ -8,7 +8,7 @@ for installation arch linux
  sudo pacman -S i3
 
 
-for instalation ubuntu/debian
+for installation ubuntu/debian
 
 
  sudo apt-get install i3
