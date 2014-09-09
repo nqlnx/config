@@ -5,12 +5,12 @@ i3status
 
 for installation arch linux 
 
-# sudo pacman -S i3
+ sudo pacman -S i3
 
 
 for instalation ubuntu/debian
 
-# sudo apt-get install i3
+ sudo apt-get install i3
 
 
 you can use i3status for i3bar
