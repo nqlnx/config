@@ -1,8 +1,3 @@
-config
-======
-
-i3status
-
 ###############################################################################
 # ceerious i3 status config
 # see "man i3status" for documentation.
@@ -14,13 +9,15 @@ i3status
 ###############################################################################
 
 general {
+
+
     colors = true
     color_good      = '#88b090'
     color_degraded  = '#ccdc90'
     color_bad       = '#e89393'
     interval = 1
 }
-
+order += "mpd"
 order += "volume master"
 order += "disk /"
 order += "disk /home"
@@ -29,7 +26,7 @@ order += "disk /home"
 #order += "run_watch VPN"
 order += "wireless wlp3s0"
 order += "ethernet enp0s25"
-order += "battery 0"
+order += "battery 1"
 order += "cpu_temperature 0"
 order += "cpu_usage 0"
 order += "load"
@@ -40,16 +37,25 @@ wireless wlp3s0 {
     format_down = ""
 }
 
+
+
+
+
 ethernet enp0s25 {
     # if you use %speed, i3status requires root privileges
     format_up = "%ip (%speed)"
     format_down = ""
 }
 
-battery 0 {
-    format = "  %status %percentage %remaining"
+
+
+
+battery 1 {
+    format = "  %status %percentage %remaining"
     last_full_capacity = true
 }
+
+
 
 run_watch DHCP {
     pidfile = "/var/run/dhclient*.pid"
@@ -59,12 +65,10 @@ run_watch VPN {
     pidfile = "/var/run/vpnc/pid"
 }
 
-tztime local {
-    format = "%A %e.%B  %H:%M:%S"
-}
+
 
 load {
-    format = "☢ %1min"
+    format = " %1min"
 }
 
 cpu_usage {
@@ -75,18 +79,45 @@ cpu_temperature 0 {
     format = "  %degrees°C "
 }
 
+
 disk "/" {
-    format = " %free"
+#format = "%free (or: %percentage_used used, %percentage_used_of_avail used of avail, %percentage_free free, %percentage_avail avail)"
+format = " %free %percentage_avail"
 }
 
-disk "/home" { 
-    format = "%free"
-}
 
 volume master {
-    format = " %volume"
-    format_muted = " MUTE"
-    device = "default"
-    mixer = "Master"
-    mixer_idx = 0
+format = "🎧 %volume"
+format_muted = "🎧 MUTE"
+device = "default"
+mixer = "Master"
+mixer_idx = 0
+
+
+
 }
+
+general {
+	output_format = "i3bar"
+	colors = true
+	interval = 1
+}
+
+
+
+
+
+
+tztime local {
+format = " %Y-%m-%d %H:%M:%S⏰"
+
+}
+
+
+mpd {
+format_up = "%title - %album - %artist"
+format_down = " - "
+host = "127.0.0.1"
+port = 6600
+}
+
